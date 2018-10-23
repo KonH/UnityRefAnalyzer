@@ -5,3 +5,9 @@ RefAnalyzer/RefAnalyzer/RefAnalyzer.Vsix/bin/
 RefAnalyzer/RefAnalyzer/RefAnalyzer.Vsix/obj/
 RefAnalyzer/RefAnalyzer/RefAnalyzer/bin/
 RefAnalyzer/RefAnalyzer/RefAnalyzer/obj/
+UnityProject/Library/
+UnityProject/packages/
+UnityProject/Temp/
+UnityProject/.vs/
+UnityProject/UnityProject.csproj
+UnityProject/UnityProject.sln
