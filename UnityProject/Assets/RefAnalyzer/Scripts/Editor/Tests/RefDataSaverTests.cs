@@ -1,6 +1,6 @@
 ﻿using System.IO;
-using RefAnalyzer.Core;
 using NUnit.Framework;
+using RefAnalyzer.Data;
 
 namespace RefAnalyzer.Tests {
 	[TestFixture]

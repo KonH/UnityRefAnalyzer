@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace RefAnalyzer.Core {
+namespace RefAnalyzer.Data {
 	public class RefDataSerializer {
 		readonly RefData _data;
 

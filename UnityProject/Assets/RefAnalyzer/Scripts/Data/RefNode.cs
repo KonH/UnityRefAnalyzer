@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace RefAnalyzer.Core {
+namespace RefAnalyzer.Data {
 	[Serializable]
 	public class RefNode {
 		public string SourcePath    { get { return srcPath ; } }

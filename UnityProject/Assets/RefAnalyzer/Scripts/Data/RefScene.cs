@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace RefAnalyzer.Core {
+namespace RefAnalyzer.Data {
 	[Serializable]
 	public class RefScene {
 		public string        Path  { get { return path;  } }

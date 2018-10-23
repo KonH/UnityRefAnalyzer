@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using UnityEngine.Assertions;
 
-namespace RefAnalyzer.Core {
+namespace RefAnalyzer.Data {
 	public class RefDataSaver {
 		readonly string _path;
 		readonly string _contents;
