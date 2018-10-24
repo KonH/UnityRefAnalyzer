@@ -1,0 +1,17 @@
+{
+    "scenes": [
+        {
+            "path": "Assets/RefAnalyzer/Scenes/01_ButtonOnClick.unity",
+            "nodes": [
+                {
+                    "srcPath": "Canvas/ButtonObject",
+                    "srcType": "UnityEngine.UI.Button",
+                    "srcProp": "onClick",
+                    "tgPath": "TestObject",
+                    "tgType": "TestComponent",
+                    "tgMethod": "OnClick"
+                }
+            ]
+        }
+    ]
+}
