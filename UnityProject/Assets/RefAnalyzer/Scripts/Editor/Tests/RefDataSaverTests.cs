@@ -5,7 +5,7 @@ using RefAnalyzer.Data;
 namespace RefAnalyzer.Tests {
 	[TestFixture]
 	public class RefDataSaverTests {
-		string _path = "temp.json";
+		string _path = TestSettings.TempFilePath;
 
 		[SetUp]
 		public void SetUp() {

@@ -8,11 +8,10 @@ using NUnit.Framework;
 
 namespace RefAnalyzer.Tests {
 	public class PlaymodeTests {
-		const string RootScenesDirectory = "Assets/RefAnalyzer/Scenes/";
-
+		
 		[UnityTest]
 		public IEnumerator PlaymodeTestsWithEnumeratorPasses() {
-			var scenePath = RootScenesDirectory + "01_ButtonOnClick.unity";
+			var scenePath = TestSettings.ButtonClickScene;
 			SceneManager.LoadScene(scenePath);
 			yield return null;
 			var processor = new SceneProcessor(SceneManager.GetActiveScene());
