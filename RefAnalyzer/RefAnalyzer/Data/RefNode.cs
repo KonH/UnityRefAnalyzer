@@ -1,20 +1,20 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace RefAnalyzer.Data {
 	public class RefNode {
-		public string SourcePath    { get { return srcPath ; } }
-		public string SourceType    { get { return srcType ; } }
-		public string SourceProprty { get { return srcProp ; } }
-		public string TargetPath    { get { return tgPath  ; } }
-		public string TargetType    { get { return tgType  ; } }
-		public string TargetMethod  { get { return tgMethod; } }
-		
-		string srcPath;
-		string srcType;
-		string srcProp;
-		string tgPath;
-		string tgType;
-		string tgMethod;
+		[JsonProperty(PropertyName = "srcPath")]
+		public string SourcePath     { get; private set; }
+		[JsonProperty(PropertyName = "srcType")]
+		public string SourceType     { get; private set; }
+		[JsonProperty(PropertyName = "srcProp")]
+		public string SourceProperty { get; private set; }
+		[JsonProperty(PropertyName = "tgPath")]
+		public string TargetPath     { get; private set; }
+		[JsonProperty(PropertyName = "tgType")]
+		public string TargetType     { get; private set; }
+		[JsonProperty(PropertyName = "tgMethod")]
+		public string TargetMethod   { get; private set; }
 
 		public RefNode(string srcPath, string srcType, string srcProp, string tgPath, string tgType, string tgMethod) {
 			if ( string.IsNullOrEmpty(srcPath) ) {
@@ -35,12 +35,12 @@ namespace RefAnalyzer.Data {
 			if ( string.IsNullOrEmpty(tgMethod) ) {
 				throw new ArgumentException("tgMethod");
 			}
-			this.srcPath  = srcPath;
-			this.srcType  = srcType;
-			this.srcProp  = srcProp;
-			this.tgPath   = tgPath;
-			this.tgType   = tgType;
-			this.tgMethod = tgMethod;
+			SourcePath     = srcPath;
+			SourceType     = srcType;
+			SourceProperty = srcProp;
+			TargetPath     = tgPath;
+			TargetType     = tgType;
+			TargetMethod   = tgMethod;
 		}
 	}
 }

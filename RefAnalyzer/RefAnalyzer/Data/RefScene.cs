@@ -1,25 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace RefAnalyzer.Data {
 	public class RefScene {
-		public string        Path  { get { return path;  } }
-		public List<RefNode> Nodes { get { return nodes; } }
-		
-		string path;
-		
-		List<RefNode> nodes;
+		[JsonProperty(PropertyName = "path")]
+		public string        Path  { get; private set; }
+		[JsonProperty(PropertyName = "nodes")]
+		public List<RefNode> Nodes { get; private set; }
 
-		internal RefScene(string path) {
-			this.path = path;
-			nodes = new List<RefNode>();
+		public RefScene() {
+			Nodes = new List<RefNode>();
+		}
+
+		public RefScene(string path):base() {
+			Path = path;
 		}
 
 		public void AddNode(RefNode node) {
 			if ( node == null ) {
 				throw new ArgumentNullException("node");
 			}
-			nodes.Add(node);
+			Nodes.Add(node);
 		}
 	}
 }

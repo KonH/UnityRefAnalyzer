@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace RefAnalyzer.Data {
 	public class RefData {
-		public List<RefScene> Scenes { get { return scenes; } }
-		
-		List<RefScene> scenes;
+		[JsonProperty(PropertyName = "scenes")]
+		public List<RefScene> Scenes { get; private set; }
 		
 		public RefData() {
-			scenes = new List<RefScene>();
+			Scenes = new List<RefScene>();
 		}
 
 		public RefScene AddScene(string path) {
 			if ( string.IsNullOrEmpty(path) ) {
 				throw new ArgumentNullException("path");
 			}
-			if ( scenes.Find(s => s.Path == path) != null ) {
+			if ( Scenes.Find(s => s.Path == path) != null ) {
 				throw new ArgumentException("path");
 			}
 			var scene = new RefScene(path);
-			scenes.Add(scene);
+			Scenes.Add(scene);
 			return scene;
 		}
 	}
