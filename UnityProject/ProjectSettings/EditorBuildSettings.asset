@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/RefAnalyzer/Scenes/00_EmptyScene.unity
+    guid: 7518f517deb976d4ca4cfbf856768cbb
+  - enabled: 1
     path: Assets/RefAnalyzer/Scenes/01_ButtonOnClick.unity
     guid: 2318ffb4f7ba7224cb40e131ce73467d

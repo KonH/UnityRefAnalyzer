@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
 using RefAnalyzer.Core;
 using RefAnalyzer.Data;
@@ -22,12 +23,15 @@ namespace RefAnalyzer {
 		}
 
 		public RefData Prepare() {
+			var activeScene = SceneManager.GetActiveScene();
 			foreach ( var scenePath in _scenes ) {
 				var scene = EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Additive);
 				Assert.IsTrue(scene.IsValid());
 				var rawSceneData = new SceneProcessor(scene).Process();
 				SaveSceneData(rawSceneData);
-				EditorSceneManager.CloseScene(scene, false);
+				if ( scene.path != activeScene.path ) {
+					EditorSceneManager.CloseScene(scene, true);
+				}
 			}
 			return _serializationData;
 		}
