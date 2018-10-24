@@ -11,3 +11,10 @@ UnityProject/Temp/
 UnityProject/.vs/
 UnityProject/UnityProject.csproj
 UnityProject/UnityProject.sln
+UnityProject/UnityProject.Editor.csproj
+UnityProject/obj
+Assembly-CSharp-Editor.csproj
+Assembly-CSharp.csproj
+UnityProject/.idea
+UnityProject/Assets/Plugins/Editor/JetBrains.meta
+UnityProject/Assets/Plugins/Editor/JetBrains
