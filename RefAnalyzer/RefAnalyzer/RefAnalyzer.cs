@@ -24,6 +24,13 @@ namespace RefAnalyzer {
 		RefData  _data;
 		RefCache _cache;
 
+		public RefAnalyzer() {}
+
+		public RefAnalyzer(RefData data) {
+			_data = data;
+			_cache = new RefCache(_data);
+		}
+
 		public override void Initialize(AnalysisContext context) {
 			context.RegisterCompilationStartAction(AnalyzeCompilation);
 			context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.Method);
