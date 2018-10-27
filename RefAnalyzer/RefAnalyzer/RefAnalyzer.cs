@@ -21,7 +21,15 @@ namespace RefAnalyzer {
 
 		public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get { return ImmutableArray.Create(Rule); } }
 
-		RefData _data;
+		RefData  _data;
+		RefCache _cache;
+
+		public RefAnalyzer() {}
+
+		public RefAnalyzer(RefData data) {
+			_data = data;
+			_cache = new RefCache(_data);
+		}
 
 		public override void Initialize(AnalysisContext context) {
 			context.RegisterCompilationStartAction(AnalyzeCompilation);
@@ -41,16 +49,18 @@ namespace RefAnalyzer {
 				var contents = refDataLoader.Load();
 				var importer = new RefDataImporter(contents);
 				_data = importer.Import();
+				_cache = new RefCache(_data);
 			}
 		}
-
-		static string ClassName = "TestComponent";
-		static string MethodName = "OnClick";
-
+		
 		void AnalyzeSymbol(SymbolAnalysisContext context) {
+			if ( _data == null ) {
+				return;
+			}
 			var methodSymbol = (IMethodSymbol)context.Symbol;
 			var ownerType = methodSymbol.ContainingType;
-			if ( (ownerType.Name == ClassName) && (methodSymbol.Name == MethodName) ) {
+			var refs = _cache.GetRefs(ownerType.Name, methodSymbol.Name);
+			if ( refs != null ) {
 				var diagnostic = Diagnostic.Create(Rule, methodSymbol.Locations[0], methodSymbol.Name);
 				context.ReportDiagnostic(diagnostic);
 			}

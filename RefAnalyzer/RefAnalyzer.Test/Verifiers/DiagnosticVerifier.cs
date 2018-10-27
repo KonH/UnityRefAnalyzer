@@ -40,6 +40,17 @@ namespace TestHelper {
 		}
 
 		/// <summary>
+		/// Called to test a C# DiagnosticAnalyzer when applied on the single inputted string as a source
+		/// Note: input a DiagnosticResult for each Diagnostic expected
+		/// </summary>
+		/// <param name="analyzer">Custom analyzer</param>
+		/// <param name="source">A class in the form of a string to run the analyzer on</param>
+		/// <param name="expected"> DiagnosticResults that should appear after the analyzer is run on the source</param>
+		protected void VerifyCSharpDiagnostic(DiagnosticAnalyzer analyzer, string source, params DiagnosticResult[] expected) {
+			VerifyDiagnostics(new[] { source }, LanguageNames.CSharp, analyzer, expected);
+		}
+
+		/// <summary>
 		/// Called to test a VB DiagnosticAnalyzer when applied on the single inputted string as a source
 		/// Note: input a DiagnosticResult for each Diagnostic expected
 		/// </summary>
