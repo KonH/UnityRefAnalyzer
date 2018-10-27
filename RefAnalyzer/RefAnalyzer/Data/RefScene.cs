@@ -1,31 +1,26 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
 using RefAnalyzer.Validation;
+using Newtonsoft.Json;
 
-namespace RefAnalyzer.Data
-{
-    public class RefScene
-    {
-        public RefScene()
-        {
-            Nodes = new List<RefNode>();
-        }
+namespace RefAnalyzer.Data {
+	public class RefScene {
+		[JsonProperty(PropertyName = "path")]
+		public string Path { get; private set; }
 
-        public RefScene(string path) : this()
-        {
-            Path = path;
-        }
+		[JsonProperty(PropertyName = "nodes")]
+		public List<RefNode> Nodes { get; private set; }
 
-        [JsonProperty(PropertyName = "path")]
-        public string Path { get; private set; }
+		public RefScene() {
+			Nodes = new List<RefNode>();
+		}
 
-        [JsonProperty(PropertyName = "nodes")]
-        public List<RefNode> Nodes { get; private set; }
+		public RefScene(string path) : this() {
+			Path = path;
+		}
 
-        public void AddNode(RefNode node)
-        {
-            Guard.NotNull(node);
-            Nodes.Add(node);
-        }
-    }
+		public void AddNode(RefNode node) {
+			Guard.NotNull(node);
+			Nodes.Add(node);
+		}
+	}
 }
