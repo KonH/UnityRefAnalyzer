@@ -9,6 +9,14 @@ namespace RefAnalyzer.Test.Data {
 		}
 
 		[TestMethod]
+		public void IsSceneConstructorsWorksProperly() {
+			var scene0 = new RefScene();
+			Assert.IsNotNull(scene0.Nodes);
+			var scene1 = new RefScene("path");
+			Assert.IsNotNull(scene1.Nodes);
+		}
+
+		[TestMethod]
 		public void IsDataContainsScene() {
 			var data = Import("{ \"scenes\": [ { \"path\": \"scenePath\" } ] }");
 			Assert.AreEqual(1, data.Scenes.Count);

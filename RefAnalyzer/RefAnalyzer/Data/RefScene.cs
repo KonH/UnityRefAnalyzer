@@ -13,7 +13,7 @@ namespace RefAnalyzer.Data {
 			Nodes = new List<RefNode>();
 		}
 
-		public RefScene(string path):base() {
+		public RefScene(string path) : this() {
 			Path = path;
 		}
 
