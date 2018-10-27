@@ -2,7 +2,8 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RefAnalyzer.Data;
-using TestHelper;
+using RefAnalyzer.Test.Helpers;
+using DiagnosticVerifier = RefAnalyzer.Test.Verifiers.DiagnosticVerifier;
 
 namespace RefAnalyzer.Test {
 	[TestClass]
