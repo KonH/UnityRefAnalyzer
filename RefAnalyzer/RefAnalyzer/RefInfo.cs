@@ -1,31 +1,28 @@
-﻿using System;
+﻿using RefAnalyzer.Validation;
 
-namespace RefAnalyzer {
-	public class RefInfo {
-		public string SourcePath     { get; }
-		public string SourceType     { get; }
-		public string SourceProperty { get; }
-		public string TargetPath     { get; }
-		public string ScenePath      { get; }
+namespace RefAnalyzer
+{
+    public class RefInfo
+    {
+        public RefInfo(string sourcePath, string sourceType, string sourceProperty,
+                       string targetPath, string scenePath)
+        {
+            Guard.NotNullOrEmpty(sourcePath);
+            Guard.NotNullOrEmpty(sourceType);
+            Guard.NotNullOrEmpty(sourceProperty);
+            Guard.NotNullOrEmpty(targetPath);
 
-		public RefInfo(string srcPath, string srcType, string srcProperty, string tgPath, string scenePath) {
-			if ( string.IsNullOrEmpty(srcPath) ) {
-				throw new ArgumentException(nameof(srcPath));
-			}
-			if ( string.IsNullOrEmpty(srcType) ) {
-				throw new ArgumentException(nameof(srcType));
-			}
-			if ( string.IsNullOrEmpty(srcProperty) ) {
-				throw new ArgumentException(nameof(srcProperty));
-			}
-			if ( string.IsNullOrEmpty(tgPath) ) {
-				throw new ArgumentException(nameof(tgPath));
-			}
-			SourcePath     = srcPath;
-			SourceType     = srcType;
-			SourceProperty = srcProperty;
-			TargetPath     = tgPath;
-			ScenePath      = scenePath;
-		}
-	}
+            SourcePath = sourcePath;
+            SourceType = sourceType;
+            SourceProperty = sourceProperty;
+            TargetPath = targetPath;
+            ScenePath = scenePath;
+        }
+
+        public string SourcePath { get; }
+        public string SourceType { get; }
+        public string SourceProperty { get; }
+        public string TargetPath { get; }
+        public string ScenePath { get; }
+    }
 }
