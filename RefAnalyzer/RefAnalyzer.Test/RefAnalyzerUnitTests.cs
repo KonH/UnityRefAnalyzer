@@ -34,7 +34,6 @@ class TestClass {
 			VerifyCSharpDiagnostic(new RefAnalyzer(data), test, expected);
 		}
 
-
 		protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer() {
 			return new RefAnalyzer();
 		}
