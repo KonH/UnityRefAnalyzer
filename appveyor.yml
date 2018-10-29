@@ -8,3 +8,6 @@ before_build:
 build:
   project: RefAnalyzer/RefAnalyzer.sln
   verbosity: minimal
+artifacts:
+- path: RefAnalyzer\RefAnalyzer\bin\Debug\RefAnalyzer.*.nupkg
+  name: NuGet
