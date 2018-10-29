@@ -10,7 +10,7 @@ And even find objects where it referenced:
 
 ## Summary
 
-This project get you ability to track scene references to your methods inside your IDE. It's usefull, because IDE don't now anything about such links and you can't rely only on "Find References" feature.
+This project get you ability to track scene references to your methods inside your IDE. It's useful, because IDE don't now anything about such links and you can't rely only on "Find References" feature.
 Example: you think that method in your class isn't used and decided to remove it. But you identify issues with that only when open one of your scene, when it actually used and inspect references.
 Such problems is hard to predict in common cases.
 
