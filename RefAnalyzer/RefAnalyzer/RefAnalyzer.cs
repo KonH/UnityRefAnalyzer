@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
@@ -8,18 +9,16 @@ using RefAnalyzer.Extensions;
 namespace RefAnalyzer {
 	[DiagnosticAnalyzer(LanguageNames.CSharp)]
 	public class RefAnalyzer : DiagnosticAnalyzer {
-		public const string DiagnosticId = "RefAnalyzer";
+		const string DiagnosticId = "RefAnalyzer";
+		const string Category     = "Unity";
 
 		// You can change these strings in the Resources.resx file. If you do not want your analyzer to be localize-able, you can use regular strings for Title and MessageFormat.
 		// See https://github.com/dotnet/roslyn/blob/master/docs/analyzers/Localizing%20Analyzers.md for more on localization
-		static readonly LocalizableString Title = new LocalizableResourceString(nameof(Resources.AnalyzerTitle), Resources.ResourceManager, typeof(Resources));
-		static readonly LocalizableString MessageFormat = new LocalizableResourceString(nameof(Resources.AnalyzerMessageFormat), Resources.ResourceManager, typeof(Resources));
-		static readonly LocalizableString Description = new LocalizableResourceString(nameof(Resources.AnalyzerDescription), Resources.ResourceManager, typeof(Resources));
-		const string Category = "Unity";
+		static readonly LocalizableString    Title         = new LocalizableResourceString(nameof(Resources.AnalyzerTitle), Resources.ResourceManager, typeof(Resources));
+		static readonly LocalizableString    MessageFormat = new LocalizableResourceString(nameof(Resources.AnalyzerMessageFormat), Resources.ResourceManager, typeof(Resources));
+		static readonly DiagnosticDescriptor Rule          = new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, Category, DiagnosticSeverity.Warning, isEnabledByDefault: true);
 
-		static DiagnosticDescriptor Rule = new DiagnosticDescriptor(DiagnosticId, Title, MessageFormat, Category, DiagnosticSeverity.Warning, isEnabledByDefault: true, description: Description);
-
-		public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get { return ImmutableArray.Create(Rule); } }
+		public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
 		RefData  _data;
 		RefCache _cache;
@@ -61,7 +60,18 @@ namespace RefAnalyzer {
 			var ownerType = methodSymbol.ContainingType;
 			var refs = _cache.GetRefs(ownerType.Name, methodSymbol.Name);
 			if ( refs != null ) {
-				var diagnostic = Diagnostic.Create(Rule, methodSymbol.Locations[0], methodSymbol.Name);
+				var pathes = string.Join(
+					",",
+					refs.Select(
+						r => $"{r.ScenePath} ({r.SourcePath}.{r.SourceProperty} => {r.TargetPath})"
+					)
+				);
+				var desc = new LocalizableResourceString(nameof(Resources.AnalyzerDescription), Resources.ResourceManager, typeof(Resources), pathes);
+				var concreteDescriptor = new DiagnosticDescriptor(
+					Rule.Id, Rule.Title, Rule.MessageFormat, Rule.Category, Rule.DefaultSeverity, isEnabledByDefault: Rule.IsEnabledByDefault,
+					description: desc
+				);
+				var diagnostic = Diagnostic.Create(concreteDescriptor, methodSymbol.Locations[0], methodSymbol.Name);
 				context.ReportDiagnostic(diagnostic);
 			}
 		}

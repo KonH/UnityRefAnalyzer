@@ -62,7 +62,7 @@ namespace RefAnalyzer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Referenced from: TODO..
+        ///   Looks up a localized string similar to Referenced from: {0}..
         /// </summary>
         internal static string AnalyzerDescription {
             get {
