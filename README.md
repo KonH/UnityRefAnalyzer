@@ -1,5 +1,7 @@
 # UnityRefAnalizer
 
+[![Build status](https://ci.appveyor.com/api/projects/status/ktnlrhdxpdsay8p3?svg=true)](https://ci.appveyor.com/project/KonH/unityrefanalyzer)
+
 Roslyn code analyzer to find method usages on scenes. Early stage of production, issues represents progress.
 
 You can see which methods is referenced from scenes:
