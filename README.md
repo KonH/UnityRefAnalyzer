@@ -2,11 +2,15 @@
 
 Roslyn code analyzer to find method usages on scenes. Early stage of production, issues represents progress.
 
+You can see which methods is referenced from scenes:
 ![screen_1](https://raw.githubusercontent.com/KonH/UnityRefAnalyzer/master/Content/screen_1.png)
+
+And even find objects where it referenced:
+![screen_2](https://raw.githubusercontent.com/KonH/UnityRefAnalyzer/master/Content/screen_2.png)
 
 ## Summary
 
-This project get you ability to track scene references to your methods inside your IDE. It's usefull, because IDE don't now anything about such links and you can't rely only on "Find References" feature.
+This project get you ability to track scene references to your methods inside your IDE. It's useful, because IDE don't now anything about such links and you can't rely only on "Find References" feature.
 Example: you think that method in your class isn't used and decided to remove it. But you identify issues with that only when open one of your scene, when it actually used and inspect references.
 Such problems is hard to predict in common cases.
 
