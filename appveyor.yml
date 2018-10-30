@@ -3,17 +3,19 @@ pull_requests:
   do_not_increment_build_number: true
 skip_tags: true
 image: Visual Studio 2017
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
 before_build:
 - cmd: nuget restore RefAnalyzer/RefAnalyzer.sln
 build:
   project: RefAnalyzer/RefAnalyzer.sln
   verbosity: minimal
-assembly_info:
-  patch: true
-  file: AssemblyInfo.*
-  assembly_version: "{version}"
-  assembly_file_version: "{version}"
-  assembly_informational_version: "{version}"
 artifacts:
 - path: RefAnalyzer\RefAnalyzer\bin\Debug\UnityRefAnalyzer.*.nupkg
   name: NuGet
