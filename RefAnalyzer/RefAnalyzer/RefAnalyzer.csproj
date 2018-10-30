@@ -18,7 +18,7 @@
     <Description>UnityRefAnalyzer</Description>
     <PackageReleaseNotes></PackageReleaseNotes>
     <Copyright>Copyright</Copyright>
-    <PackageTags>RefAnalyzer, analyzers</PackageTags>
+    <PackageTags>RefAnalyzer, analyzers, unity, unity3d, csharp, roslyn</PackageTags>
     <NoPackageAnalysis>true</NoPackageAnalysis>
     <Version>0.1.0</Version>
     <Product>UnityRefAnalyzer</Product>
