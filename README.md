@@ -23,6 +23,13 @@ UnityRefAnalyzer contains two parts:
 
 ## Installation
 
+### NuGet
+
+### Visual Studio
+
+- Project/Manage NuGet Packages, find UnityRefAnalyzer, install it
+- or Tools/NuGet Package Manager/Package Manager Console, 'Install-Package UnityRefAnalyzer'
+
 ### Manual
 
 #### Visual Studio
