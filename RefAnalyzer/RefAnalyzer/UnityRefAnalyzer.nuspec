@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>UnityRefAnalyzer</id>
+    <version>$version$</version>
+    <authors>KonH</authors>
+    <owners>KonH</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://github.com/KonH/UnityRefAnalyzer</projectUrl>
+    <description>UnityRefAnalyzer</description>
+    <copyright>Copyright</copyright>
+    <tags>RefAnalyzer, analyzers</tags>
+    <repository url="https://github.com/KonH/UnityRefAnalyzer" />
+    <dependencies>
+      <group targetFramework=".NETStandard1.3">
+        <dependency id="Newtonsoft.Json" version="11.0.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>
