@@ -1,6 +1,7 @@
 # UnityRefAnalizer
 
 [![Build status](https://ci.appveyor.com/api/projects/status/ktnlrhdxpdsay8p3?svg=true)](https://ci.appveyor.com/project/KonH/unityrefanalyzer)
+[![NuGet Status](http://nugetstatus.com/UnityRefAnalyzer.png)](http://nugetstatus.com/packages/UnityRefAnalyzer)
 
 Roslyn code analyzer to find method usages on scenes. Early stage of production, issues represents progress.
 
@@ -21,6 +22,13 @@ UnityRefAnalyzer contains two parts:
 - Roslyn analyzer - analyze report & your sources
 
 ## Installation
+
+### NuGet
+
+### Visual Studio
+
+- Project/Manage NuGet Packages, find UnityRefAnalyzer, install it
+- or Tools/NuGet Package Manager/Package Manager Console, 'Install-Package UnityRefAnalyzer'
 
 ### Manual
 
