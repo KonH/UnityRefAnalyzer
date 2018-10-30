@@ -30,6 +30,11 @@ UnityRefAnalyzer contains two parts:
 - Project/Manage NuGet Packages, find UnityRefAnalyzer, install it
 - or Tools/NuGet Package Manager/Package Manager Console, 'Install-Package UnityRefAnalyzer'
 
+### Rider
+
+- Switch to Solution mode in explorer panel
+- Project/Manage NuGet Packages, find UnityRefAnalyzer, install it
+
 ### Manual
 
 #### Visual Studio
