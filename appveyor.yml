@@ -3,6 +3,7 @@ pull_requests:
   do_not_increment_build_number: true
 skip_tags: true
 image: Visual Studio 2017
+configuration: Release
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
@@ -17,5 +18,5 @@ build:
   project: RefAnalyzer/RefAnalyzer.sln
   verbosity: minimal
 artifacts:
-- path: RefAnalyzer\RefAnalyzer\bin\Debug\UnityRefAnalyzer.*.nupkg
+- path: RefAnalyzer\RefAnalyzer\bin\Release\UnityRefAnalyzer.*.nupkg
   name: NuGet
