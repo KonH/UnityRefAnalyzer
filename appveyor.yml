@@ -8,6 +8,12 @@ before_build:
 build:
   project: RefAnalyzer/RefAnalyzer.sln
   verbosity: minimal
+assembly_info:
+  patch: true
+  file: AssemblyInfo.*
+  assembly_version: "{version}"
+  assembly_file_version: "{version}"
+  assembly_informational_version: "{version}"
 artifacts:
 - path: RefAnalyzer\RefAnalyzer\bin\Debug\UnityRefAnalyzer.*.nupkg
   name: NuGet
