@@ -9,5 +9,5 @@ build:
   project: RefAnalyzer/RefAnalyzer.sln
   verbosity: minimal
 artifacts:
-- path: RefAnalyzer\RefAnalyzer\bin\Debug\RefAnalyzer.*.nupkg
+- path: RefAnalyzer\RefAnalyzer\bin\Debug\UnityRefAnalyzer.*.nupkg
   name: NuGet

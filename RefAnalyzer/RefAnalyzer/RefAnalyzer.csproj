@@ -7,20 +7,21 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>RefAnalyzer</PackageId>
-    <PackageVersion>1.0.0.0</PackageVersion>
+    <PackageId>UnityRefAnalyzer</PackageId>
+    <PackageVersion>0.1.0.0</PackageVersion>
     <Authors>KonH</Authors>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/KonH/UnityRefAnalyzer</PackageProjectUrl>
     <PackageIconUrl></PackageIconUrl>
     <RepositoryUrl>https://github.com/KonH/UnityRefAnalyzer</RepositoryUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Description>RefAnalyzer</Description>
+    <Description>UnityRefAnalyzer</Description>
     <PackageReleaseNotes></PackageReleaseNotes>
     <Copyright>Copyright</Copyright>
     <PackageTags>RefAnalyzer, analyzers</PackageTags>
     <NoPackageAnalysis>true</NoPackageAnalysis>
-    <Version>0.2.0</Version>
+    <Version>0.1.0</Version>
+    <Product>UnityRefAnalyzer</Product>
   </PropertyGroup>
 
   <ItemGroup>
