@@ -67,3 +67,8 @@ To get analyzer to work, you need to collect data from assets in your Unity proj
 
 - Open RefAnalyzer/RefAnalyzer.sln, run it
 - Another Visual Studio instance will appear, when you open any other project, analyzer will be added automatically
+
+### Rider
+
+- Add references to other project manually
+- Changes will be applied when you rebuid other project
