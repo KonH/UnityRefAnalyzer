@@ -15,6 +15,7 @@ UnityProject/UnityProject.csproj
 UnityProject/UnityProject.sln
 UnityProject/UnityProject.Editor.csproj
 UnityProject/obj
+UnityProject/packages.config
 Assembly-CSharp-Editor.csproj
 Assembly-CSharp.csproj
 UnityProject/.idea

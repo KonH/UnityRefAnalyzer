@@ -4,7 +4,6 @@ using System.Collections.Immutable;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 using RefAnalyzer.Data;
-using RefAnalyzer.Extensions;
 
 namespace RefAnalyzer {
 	[DiagnosticAnalyzer(LanguageNames.CSharp)]
@@ -31,25 +30,41 @@ namespace RefAnalyzer {
 		}
 
 		public override void Initialize(AnalysisContext context) {
-			context.RegisterCompilationStartAction(AnalyzeCompilation);
+			context.RegisterSyntaxTreeAction(AnalyzeTree);
 			context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.Method);
 		}
 
-		void AnalyzeCompilation(CompilationStartAnalysisContext context) {
-			if ( context == null ) {
-				throw new System.ArgumentNullException(nameof(context));
+		void AnalyzeTree(SyntaxTreeAnalysisContext context) {
+			if ( _data != null ) {
+				// skip loading, if already have data
+				return;
 			}
-			var solution = context.GetSolution();
-			if ( solution != null ) {
-				var filePath = solution.FilePath;
-				var directoryPath = Path.GetDirectoryName(filePath);
-				var jsonFilePath = Path.Combine(directoryPath, "refs.json");
-				var refDataLoader = new RefDataLoader(jsonFilePath);
-				var contents = refDataLoader.Load();
-				var importer = new RefDataImporter(contents);
-				_data = importer.Import();
-				_cache = new RefCache(_data);
+			var filePath = context.Tree.FilePath;
+			var curDir = Path.GetDirectoryName(filePath);
+			while ( true ) {
+				var expectedPath = Path.Combine(curDir, "refs.json");
+				if ( TryLoadDataFrom(expectedPath) ) {
+					return;
+				}
+				var parentDir = Directory.GetParent(curDir);
+				if ( parentDir != null ) {
+					curDir = parentDir.FullName;
+				} else {
+					return;
+				}
 			}
+		}
+
+		bool TryLoadDataFrom(string jsonFilePath) {
+			if ( !File.Exists(jsonFilePath) ) {
+				return false;
+			}
+			var refDataLoader = new RefDataLoader(jsonFilePath);
+			var contents      = refDataLoader.Load();
+			var importer      = new RefDataImporter(contents);
+			_data  = importer.Import();
+			_cache = new RefCache(_data);
+			return true;
 		}
 		
 		void AnalyzeSymbol(SymbolAnalysisContext context) {

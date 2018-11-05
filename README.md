@@ -37,12 +37,17 @@ UnityRefAnalyzer contains two parts:
 
 ### Manual
 
-#### Visual Studio
-
 - Open RefAnalyzer/RefAnalyzer.sln, build it
 - Open you Unity project
+
+#### Visual Studio
+
 - References/AddAnalyzer - select RefAnalyzer/RefAnalyzer/Newtonsoft.Json.dll
 - References/AddAnalyzer - select RefAnalyzer/RefAnalyzer/bin/Debug/netstandard1.3/RefAnalyzer.dll
+
+## Rider
+
+- Add references to csproj file manually: <ItemGroup><Analyzer Include=".../Newtonsoft.Json.dll"/><Analyzer Include=".../RefAnalyzer.dll"/></ItemGroup>
 
 ## Export
 
