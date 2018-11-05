@@ -40,10 +40,16 @@ namespace RefAnalyzer {
 				return;
 			}
 			var filePath = context.Tree.FilePath;
+			if ( string.IsNullOrWhiteSpace(filePath) ) {
+				return;
+			}
 			var curDir = Path.GetDirectoryName(filePath);
 			while ( true ) {
 				var expectedPath = Path.Combine(curDir, "refs.json");
 				if ( TryLoadDataFrom(expectedPath) ) {
+					return;
+				}
+				if ( string.IsNullOrWhiteSpace(curDir) ) {
 					return;
 				}
 				var parentDir = Directory.GetParent(curDir);
