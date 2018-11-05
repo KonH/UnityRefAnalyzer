@@ -1,3 +1,5 @@
+.DS_Store
+RefAnalyzer/.idea/
 RefAnalyzer/.vs/
 RefAnalyzer/RefAnalyzer.Test/bin/
 RefAnalyzer/RefAnalyzer.Test/obj/
