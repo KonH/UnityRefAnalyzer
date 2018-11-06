@@ -9,9 +9,12 @@ namespace RefAnalyzer.Core {
 	public class SceneCrawler {
 		public RawData Data { get; }
 
+		string _scenePath;
+		
 		public SceneCrawler(string scenePath) {
 			Assert.IsTrue(!string.IsNullOrEmpty(scenePath));
 			Data = new RawData(scenePath);
+			_scenePath = scenePath;
 		}
 
 		public void Process(Component component) {
@@ -48,8 +51,17 @@ namespace RefAnalyzer.Core {
 			var events = eventValue.GetPersistentEventCount();
 			for ( var i = 0; i < events; i++ ) {
 				var target = eventValue.GetPersistentTarget(i);
+				if ( !target ) {
+					Debug.LogWarningFormat("[{0}] Event target isn't specified for: {1}/{2}", _scenePath, AssetUtils.GetPathTo(source), propertyName);
+					continue;
+				}
 				var methodName = eventValue.GetPersistentMethodName(i);
-				Data.AddRef(new RawDataNode(source, propertyName, target, methodName));
+				try {
+					var node = new RawDataNode(source, propertyName, target, methodName);
+					Data.AddRef(node);
+				} catch ( Exception e ) {
+					Debug.LogWarningFormat("[{0}] Error while processing: {1}/{2}: {3}", _scenePath, AssetUtils.GetPathTo(source), propertyName, e);
+				}
 			}
 		}
 	}
