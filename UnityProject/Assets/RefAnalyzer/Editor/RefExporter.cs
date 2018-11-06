@@ -46,34 +46,16 @@ namespace RefAnalyzer {
 			if ( sceneData.Nodes.Count > 0 ) {
 				var sceneNode = _serializationData.AddScene(sceneData.ScenePath);
 				foreach ( var node in sceneData.Nodes ) {
-					string srcPath = GetPathTo(node.SourceObj);
-					string srcType = GetTypeName(node.SourceObj);
-					string srcProp = node.SourceProperty;
-					string tgPath = GetPathTo(node.TargetObj);
-					string tgType = GetTypeName(node.TargetObj);
-					string tgMethod = node.TargetMethod;
+					var srcPath = AssetUtils.GetPathTo(node.SourceObj);
+					var srcType = AssetUtils.GetTypeName(node.SourceObj);
+					var srcProp = node.SourceProperty;
+					var tgPath = AssetUtils.GetPathTo(node.TargetObj);
+					var tgType = AssetUtils.GetTypeName(node.TargetObj);
+					var tgMethod = node.TargetMethod;
 					var refNode = new RefNode(srcPath, srcType, srcProp, tgPath, tgType, tgMethod);
 					sceneNode.AddNode(refNode);
 				}
 			}
-		}
-
-		string GetTypeName(Object obj) {
-			return obj.GetType().FullName;
-		}
-
-		string GetPathTo(Object obj) {
-			var component = obj as Component;
-			return (component != null) ? GetPathTo(component.gameObject) : string.Empty;
-		}
-
-		string GetPathTo(GameObject go) {
-			if ( go ) {
-				var parentTrans = go.transform.parent;
-				var parentPath = parentTrans ? GetPathTo(parentTrans.gameObject) + "/" : string.Empty;
-				return parentPath + go.name;
-			}
-			return string.Empty;
 		}
 	}
 }
