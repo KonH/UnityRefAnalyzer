@@ -21,6 +21,11 @@ UnityRefAnalyzer contains two parts:
 - Unity-side exporter - made .json report about suck links from your assets
 - Roslyn analyzer - analyze report & your sources
 
+## Requirements
+
+- Unity 2017.3+
+- Scripting backend: experimental (.NET 4.6+)
+
 ## Installation
 
 ### NuGet

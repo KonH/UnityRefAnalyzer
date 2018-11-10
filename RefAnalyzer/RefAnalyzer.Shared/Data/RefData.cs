@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Newtonsoft.Json;
+﻿using System.Linq;
+using System.Collections.Generic;
 using RefAnalyzer.Validation;
+using Newtonsoft.Json;
 
 namespace RefAnalyzer.Data {
 	public class RefData {
