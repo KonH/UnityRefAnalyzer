@@ -11,12 +11,6 @@ namespace RefAnalyzer.Tests {
 			Assert.True(jsonStr.Contains(expectedPart), jsonStr);
 		}
 
-		void CheckSerializedSceneContains(string expectedPart, Action<RefScene> init) {
-			CheckSerializedJsonContains(expectedPart, d => {
-				init(d.AddScene("scene"));
-			});
-		}
-
 		void CheckSerializedNodeContains
 		(
 			string expectedName, string expectedPart,

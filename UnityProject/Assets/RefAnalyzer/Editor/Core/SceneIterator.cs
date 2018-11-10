@@ -33,7 +33,7 @@ namespace RefAnalyzer.Core {
 				if ( comp ) {
 					_visitor(comp);
 				} else {
-					Debug.LogFormat("Invalid component at '{0}'", AssetUtils.GetPathTo(root));
+					Debug.LogWarningFormat("Invalid component at '{0}'", AssetUtils.GetPathTo(root));
 				}
 			}
 		}
