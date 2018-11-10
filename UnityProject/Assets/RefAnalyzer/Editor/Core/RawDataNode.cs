@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.Assertions;
+using RefAnalyzer.Validation;
 
 namespace RefAnalyzer.Core {
 	public class RawDataNode {
@@ -9,10 +9,10 @@ namespace RefAnalyzer.Core {
 		public string TargetMethod   { get; }
 
 		public RawDataNode(Object sourceObj, string sourceProperty, Object targetObj, string targetMethod) {
-			Assert.IsNotNull(sourceObj, "sourceObj");
-			Assert.IsTrue(!string.IsNullOrEmpty(sourceProperty), "sourceProperty");
-			Assert.IsNotNull(targetObj, "targetObj");
-			Assert.IsTrue(!string.IsNullOrEmpty(targetMethod), "targetMethod");
+			Guard.NotNull(sourceObj);
+			Guard.NotNullOrEmpty(sourceProperty);
+			Guard.NotNull(targetObj);
+			Guard.NotNullOrEmpty(targetMethod);
 			SourceObj      = sourceObj;
 			SourceProperty = sourceProperty;
 			TargetObj      = targetObj;

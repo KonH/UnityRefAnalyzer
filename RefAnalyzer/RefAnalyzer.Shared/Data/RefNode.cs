@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using RefAnalyzer.Validation;
+﻿using RefAnalyzer.Validation;
+using Newtonsoft.Json;
 
 namespace RefAnalyzer.Data {
 	public class RefNode {

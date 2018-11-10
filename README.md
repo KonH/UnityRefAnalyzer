@@ -21,6 +21,11 @@ UnityRefAnalyzer contains two parts:
 - Unity-side exporter - made .json report about suck links from your assets
 - Roslyn analyzer - analyze report & your sources
 
+## Requirements
+
+- Unity 2017.3+
+- Scripting backend: experimental (.NET 4.6+)
+
 ## Installation
 
 ### NuGet
@@ -62,6 +67,12 @@ To get analyzer to work, you need to collect data from assets in your Unity proj
 - If links on your scenes changed, you need to refresh it manually
 
 ## Debugging
+
+### Common
+
+- If you are changed RefAnalyzer.Shared code, you need to run RefAnalyzer/RefAnalyzer.Shared/copy_dlls_to_unity_project.sh to get this changes on Unity side
+- Or you can copy DLL's manually 
+- Use RefAnalizer/Export Package to update package.unitypackage after changes in exporter
 
 ### Visual Studio
 

@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using UnityEngine.Assertions;
+using RefAnalyzer.Validation;
 
 namespace RefAnalyzer.Data {
 	public class RefDataSaver {
@@ -7,8 +7,8 @@ namespace RefAnalyzer.Data {
 		readonly string _contents;
 
 		public RefDataSaver(string path, string contents) {
-			Assert.IsNotNull(path);
-			Assert.IsNotNull(contents);
+			Guard.NotNull(path);
+			Guard.NotNull(contents);
 			_path = path;
 			_contents = contents;
 		}

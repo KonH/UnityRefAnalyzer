@@ -1,12 +1,12 @@
-﻿using UnityEngine.Assertions;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine.SceneManagement;
+using RefAnalyzer.Validation;
 
 namespace RefAnalyzer.Core {
 	public class SceneProcessor {
 		Scene _scene;
 
 		public SceneProcessor(Scene scene) {
-			Assert.IsTrue(scene.IsValid());
+			Guard.IsValid(scene, s => s.IsValid(), "scene");
 			_scene = scene;
 		}
 

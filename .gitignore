@@ -21,3 +21,5 @@ Assembly-CSharp.csproj
 UnityProject/.idea
 UnityProject/Assets/Plugins/Editor/JetBrains.meta
 UnityProject/Assets/Plugins/Editor/JetBrains
+RefAnalyzer/RefAnalyzer.Shared/bin
+RefAnalyzer/RefAnalyzer.Shared/obj

@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace RefAnalyzer.Tests {
 	public class RefExporterTests {
 		string[] _scenePathes = new string[] { TestSettings.ButtonClickScene };
-		string _exportPath    = TestSettings.TempFilePath;
+		string   _exportPath  = TestSettings.TempFilePath;
 
 		[Test]
 		public void IsFileCreated() {
@@ -33,7 +33,7 @@ namespace RefAnalyzer.Tests {
 			Assert.AreEqual(1, scene.Nodes.Count);
 			var node = scene.Nodes[0];
 			Assert.AreEqual("UnityEngine.UI.Button", node.SourceType);
-			Assert.AreEqual("onClick", node.SourceProprty);
+			Assert.AreEqual("onClick", node.SourceProperty);
 			Assert.AreEqual("TestComponent", node.TargetType);
 			Assert.AreEqual("OnClick", node.TargetMethod);
 		}

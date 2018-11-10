@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
+using RefAnalyzer.Validation;
 
 namespace RefAnalyzer.Core {
 	public class SceneIterator {
@@ -9,8 +9,8 @@ namespace RefAnalyzer.Core {
 		Action<Component> _visitor;
 
 		public SceneIterator(Scene scene, Action<Component> visitor) {
-			Assert.IsTrue(scene.IsValid());
-			Assert.IsNotNull(visitor);
+			Guard.IsValid(scene, s => s.IsValid(), "scene");
+			Guard.NotNull(visitor);
 			_scene   = scene;
 			_visitor = visitor;
 		}
@@ -22,15 +22,19 @@ namespace RefAnalyzer.Core {
 		}
 
 		void Visit(GameObject go) {
-			Visit(go.GetComponents<Component>());
+			Visit(go, go.GetComponents<Component>());
 			for ( var i = 0; i < go.transform.childCount; i++ ) {
 				Visit(go.transform.GetChild(i).gameObject);
 			}
 		}
 
-		void Visit(Component[] components) {
+		void Visit(GameObject root, Component[] components) {
 			foreach ( var comp in components ) {
-				_visitor(comp);
+				if ( comp ) {
+					_visitor(comp);
+				} else {
+					Debug.LogWarningFormat("Invalid component at '{0}'", AssetUtils.GetPathTo(root));
+				}
 			}
 		}
 	}
