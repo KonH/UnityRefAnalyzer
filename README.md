@@ -68,6 +68,12 @@ To get analyzer to work, you need to collect data from assets in your Unity proj
 
 ## Debugging
 
+### Common
+
+- If you are changed RefAnalyzer.Shared code, you need to run RefAnalyzer/RefAnalyzer.Shared/copy_dlls_to_unity_project.sh to get this changes on Unity side
+- Or you can copy DLL's manually 
+- Use RefAnalizer/Export Package to update package.unitypackage after changes in exporter
+
 ### Visual Studio
 
 - Open RefAnalyzer/RefAnalyzer.sln, run it
