@@ -1,11 +1,10 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Assertions;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
 using RefAnalyzer.Core;
 using RefAnalyzer.Data;
+using RefAnalyzer.Validation;
 
 namespace RefAnalyzer {
 	public class RefExporter {
@@ -15,9 +14,9 @@ namespace RefAnalyzer {
 		RefData _serializationData = new RefData();
 
 		public RefExporter(IEnumerable<string> scenes, string exportPath) {
-			Assert.IsNotNull(scenes);
-			Assert.IsTrue(scenes.Count() > 0);
-			Assert.IsTrue(!string.IsNullOrEmpty(exportPath));
+			Guard.NotNull(scenes);
+			Guard.IsValid(scenes, s => s.Count() > 0, "scenes");
+			Guard.NotNullOrWhiteSpace(exportPath);
 			_scenes     = scenes;
 			_exportPath = exportPath;
 		}
@@ -26,7 +25,7 @@ namespace RefAnalyzer {
 			var activeScene = SceneManager.GetActiveScene();
 			foreach ( var scenePath in _scenes ) {
 				var scene = EditorSceneManager.OpenScene(scenePath, OpenSceneMode.Additive);
-				Assert.IsTrue(scene.IsValid());
+				Guard.IsValid(scene, s => s.IsValid(), "scene");
 				var rawSceneData = new SceneProcessor(scene).Process();
 				SaveSceneData(rawSceneData);
 				if ( scene.path != activeScene.path ) {

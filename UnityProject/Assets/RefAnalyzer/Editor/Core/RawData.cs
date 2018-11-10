@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using UnityEngine.Assertions;
+using RefAnalyzer.Validation;
 
 namespace RefAnalyzer.Core {
 	public class RawData {
@@ -7,13 +7,13 @@ namespace RefAnalyzer.Core {
 		public List<RawDataNode> Nodes     { get; }
 		
 		public RawData(string scenePath) {
-			Assert.IsTrue(!string.IsNullOrEmpty(scenePath));
+			Guard.NotNullOrWhiteSpace(scenePath);
 			ScenePath = scenePath;
 			Nodes = new List<RawDataNode>();
 		}
 		
 		public void AddRef(RawDataNode node) {
-			Assert.IsNotNull(node);
+			Guard.NotNull(node);
 			Nodes.Add(node);
 		}
 	}

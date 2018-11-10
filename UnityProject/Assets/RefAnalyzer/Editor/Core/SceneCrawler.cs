@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Reflection;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.Events;
-using UnityEngine.Assertions;
+using RefAnalyzer.Validation;
 
 namespace RefAnalyzer.Core {
 	public class SceneCrawler {
@@ -12,7 +11,7 @@ namespace RefAnalyzer.Core {
 		string _scenePath;
 		
 		public SceneCrawler(string scenePath) {
-			Assert.IsTrue(!string.IsNullOrEmpty(scenePath));
+			Guard.NotNullOrWhiteSpace(scenePath);
 			Data = new RawData(scenePath);
 			_scenePath = scenePath;
 		}

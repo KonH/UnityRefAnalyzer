@@ -4,7 +4,7 @@ using NUnit.Framework;
 namespace RefAnalyzer.Tests {
 	public class RefExporterTests {
 		string[] _scenePathes = new string[] { TestSettings.ButtonClickScene };
-		string _exportPath    = TestSettings.TempFilePath;
+		string   _exportPath  = TestSettings.TempFilePath;
 
 		[Test]
 		public void IsFileCreated() {
