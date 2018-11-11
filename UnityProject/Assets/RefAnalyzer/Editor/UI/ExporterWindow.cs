@@ -48,7 +48,7 @@ namespace RefAnalyzer.UI {
 			EditorUtility.DisplayProgressBar(
 				string.Format("Data Export ({0}/{1})", _exporter.CurrentProgress, _exporter.TotalProgress),
 				string.Format("Scene: '{0}'", _exporter.CurrentScenePath),
-				Mathf.Clamp01(_exporter.CurrentProgress / _exporter.TotalProgress)
+				Mathf.Clamp01((float)_exporter.CurrentProgress / _exporter.TotalProgress)
 			);
 			if ( _exporter.PrepareNextScene() ) {
 				_exporter.Export();
