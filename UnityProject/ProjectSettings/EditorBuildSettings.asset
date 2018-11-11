@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/RefAnalyzer/Scenes/01_ButtonOnClick.unity
     guid: 2318ffb4f7ba7224cb40e131ce73467d
+  - enabled: 1
+    path: Assets/RefAnalyzer/Scenes/01_MissingReference.unity
+    guid: 57a4f987524c94417abf4f39d5a7746a
