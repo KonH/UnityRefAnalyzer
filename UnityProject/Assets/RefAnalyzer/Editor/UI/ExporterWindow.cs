@@ -7,8 +7,9 @@ namespace RefAnalyzer.UI {
 		const string ExportPath = "refs.json";
 		const float  Margin     = 10;
 
-		GUIStyle _style = GUIStyle.none;
-		
+		GUIStyle    _style    = GUIStyle.none;
+		RefExporter _exporter = null;
+
 		[MenuItem("Window/RefAnalyzer")]
 		static void Init() {
 			var window = GetWindow<ExporterWindow>("RefExporter");
@@ -28,14 +29,33 @@ namespace RefAnalyzer.UI {
 				OnRefreshData();
 			}
 			GUILayout.EndArea();
+			UpdateProgress();
+		}
+
+		void OnInspectorUpdate() {
+			Repaint();
 		}
 
 		void OnRefreshData() {
-			var scenes   = EditorBuildSettings.scenes.Select(scene => scene.path);
-			var exporter = new RefExporter(scenes, ExportPath);
-			exporter.Prepare();
-			exporter.Export();
-			Debug.LogFormat("Data exported to '{0}'", ExportPath);
+			var scenes = EditorBuildSettings.scenes.Select(scene => scene.path);
+			_exporter = new RefExporter(scenes, ExportPath);
+		}
+
+		void UpdateProgress() {
+			if ( _exporter == null ) {
+				return;
+			}
+			EditorUtility.DisplayProgressBar(
+				string.Format("Data Export ({0}/{1})", _exporter.CurrentProgress, _exporter.TotalProgress),
+				string.Format("Scene: '{0}'", _exporter.CurrentScenePath),
+				Mathf.Clamp01(_exporter.CurrentProgress / _exporter.TotalProgress)
+			);
+			if ( _exporter.PrepareNextScene() ) {
+				_exporter.Export();
+				_exporter = null;
+				EditorUtility.ClearProgressBar();
+				Debug.LogFormat("Data exported to '{0}'", ExportPath);
+			}
 		}
 	}
 }

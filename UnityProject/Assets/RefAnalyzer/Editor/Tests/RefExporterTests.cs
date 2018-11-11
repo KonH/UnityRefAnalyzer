@@ -12,7 +12,7 @@ namespace RefAnalyzer.Tests {
 				File.Delete(_exportPath);
 			}
 			var exporter = new RefExporter(_scenePathes, _exportPath);
-			exporter.Prepare();
+			exporter.PrepareAll();
 			exporter.Export();
 			if ( File.Exists(_exportPath) ) {
 				File.Delete(_exportPath);
@@ -21,14 +21,14 @@ namespace RefAnalyzer.Tests {
 
 		[Test]
 		public void IsDataContainsScene() {
-			var data = new RefExporter(_scenePathes, _exportPath).Prepare();
+			var data = new RefExporter(_scenePathes, _exportPath).PrepareAll();
 			Assert.AreEqual(1, data.Scenes.Count);
 			Assert.AreEqual(_scenePathes[0], data.Scenes[0].Path);
 		}
 
 		[Test]
 		public void IsDataContainsExpectedNodes() {
-			var data = new RefExporter(_scenePathes, _exportPath).Prepare();
+			var data = new RefExporter(_scenePathes, _exportPath).PrepareAll();
 			var scene = data.Scenes[0];
 			Assert.AreEqual(1, scene.Nodes.Count);
 			var node = scene.Nodes[0];
@@ -40,7 +40,7 @@ namespace RefAnalyzer.Tests {
 
 		[Test]
 		public void IsDataContainsValidPathes() {
-			var data = new RefExporter(_scenePathes, _exportPath).Prepare();
+			var data = new RefExporter(_scenePathes, _exportPath).PrepareAll();
 			var node = data.Scenes[0].Nodes[0];
 			Assert.AreEqual("Canvas/ButtonObject", node.SourcePath);
 			Assert.AreEqual("TestObject", node.TargetPath);
