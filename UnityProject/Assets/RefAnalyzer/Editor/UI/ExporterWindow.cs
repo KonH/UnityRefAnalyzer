@@ -29,11 +29,10 @@ namespace RefAnalyzer.UI {
 				OnRefreshData();
 			}
 			GUILayout.EndArea();
-			UpdateProgress();
 		}
 
 		void OnInspectorUpdate() {
-			Repaint();
+			UpdateProgress();
 		}
 
 		void OnRefreshData() {
