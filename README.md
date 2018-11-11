@@ -21,6 +21,11 @@ UnityRefAnalyzer contains two parts:
 - Unity-side exporter - made .json report about suck links from your assets
 - Roslyn analyzer - analyze report & your sources
 
+## Features
+
+- Shows warnings on methods, which referenced via Inspector (in IDE)
+- Show warnings on missing references in Unity log when exporting data
+
 ## Requirements
 
 - Unity 2017.3+
